@@ -1,0 +1,45 @@
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    box-shadow: 3px 4px 9px 0px #53abdd80;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform .5s;
+}
+
+.btn:hover {
+    transform: scale(.9);
+}
+
+.complete {
+    background-color: rgb(153, 245, 153);
+
+}
+
+.undo {
+    background-color: rgb(245, 153, 153);
+}
+
+.delete {
+    background-color: rgb(153, 185, 245);
+    
+}
+
+.task_complete{ 
+    text-decoration: line-through;
+}
