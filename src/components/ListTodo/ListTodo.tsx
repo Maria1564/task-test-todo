@@ -4,15 +4,22 @@ import { useTodoStore } from "../../store/Todo";
 
 const ListTodo: React.FC = () => {
   const todos = useTodoStore((state) => state.todos);
+  const filteredTodos = useTodoStore((state) => state.filteredTodos);
+  const filter = useTodoStore((state) => state.filter);
   const getAllTask = useTodoStore((state) => state.getAllTask);
-
+  
   useEffect(() => {
+    console.log("dddd")
     getAllTask();
-  }, [getAllTask]);
+  }, []);
 
+  
+  console.log(filteredTodos, todos)
   return (
     <div>
-      {todos.map((item) => (
+      {filter=== "all" ? todos.map((item) => (
+        <Item key={item.id} todo={item} />
+      )) : filteredTodos.map((item) => (
         <Item key={item.id} todo={item} />
       ))}
     </div>

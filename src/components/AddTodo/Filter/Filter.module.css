@@ -1,0 +1,16 @@
+.active_filter {
+    background-color: #c4e0efa6;
+}
+
+.group_btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
