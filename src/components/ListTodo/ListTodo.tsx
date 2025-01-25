@@ -10,7 +10,7 @@ const ListTodo: React.FC = () => {
   
   useEffect(() => {
     getAllTask();
-  }, []);
+  }, [getAllTask]);
 
   
       console.log("todos >> ", todos, "filterTodo >> ", filteredTodos)
