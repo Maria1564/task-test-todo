@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import App from "./App";
@@ -31,9 +31,11 @@ test("отметка задачи как выполненной", () => {
 
 test("удаление задачи из списка", ()=>{
   render(<App />);
-  // const task = screen.getByText("Новая задача");
+  const task = screen.getByText("Новая задача");
+  const deleteButton = within(task.closest('.todo')!).getByText("Удалить");
 
-  // expect(screen.queryByText('Новая задача')).not.toBeInTheDocument();
-  screen.debug();
+  fireEvent.click(deleteButton);
 
+  expect(screen.queryByText('Новая задача')).not.toBeInTheDocument();
+  expect(screen.queryByText('Новая задача2')).toBeInTheDocument();
 })
