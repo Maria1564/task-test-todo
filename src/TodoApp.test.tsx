@@ -1,7 +1,9 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import React from "react";
 import App from "./App";
+
+// @ts-expect-error-next-line
+import React from "react";
 
 test("добавление задачи в список", () => {
   render(<App />);
