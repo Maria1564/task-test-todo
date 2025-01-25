@@ -3,7 +3,7 @@ import { useTodoStore } from "../../store/Todo"
 import { Todo } from "../../types"
 import style from "./AddTodo.module.css"
 import Filter from "./Filter/Filter"
-
+import React from "react"
 
 const AddTodo = () => {
     const todos = useTodoStore(state => state.todos)

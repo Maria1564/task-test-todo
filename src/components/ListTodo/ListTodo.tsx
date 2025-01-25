@@ -13,7 +13,6 @@ const ListTodo: React.FC = () => {
   }, [getAllTask]);
 
   
-      console.log("todos >> ", todos, "filterTodo >> ", filteredTodos)
   return (
     <div>
       {filter=== "all" ? todos.map((item) => (

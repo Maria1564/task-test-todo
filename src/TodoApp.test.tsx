@@ -1,0 +1,39 @@
+import { fireEvent, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import React from "react";
+import App from "./App";
+
+test("добавление задачи в список", () => {
+  render(<App />);
+
+  const input = screen.getByPlaceholderText("new task");
+  const addButton = screen.getByText("Добавить");
+
+  fireEvent.change(input, { target: { value: "Новая задача" } });
+  fireEvent.click(addButton);
+
+  fireEvent.change(input, { target: { value: "Новая задача2" } });
+  fireEvent.click(addButton);
+
+  expect(screen.getByText("Новая задача")).toBeInTheDocument();
+});
+
+test("отметка задачи как выполненной", () => {
+  render(<App />);
+
+  const task = screen.getByText("Новая задача");
+
+  const completeButtons = screen.getAllByText("✔");
+  fireEvent.click(completeButtons[0]);
+
+  expect(task).toHaveClass("task_complete");
+});
+
+test("удаление задачи из списка", ()=>{
+  render(<App />);
+  // const task = screen.getByText("Новая задача");
+
+  // expect(screen.queryByText('Новая задача')).not.toBeInTheDocument();
+  screen.debug();
+
+})
