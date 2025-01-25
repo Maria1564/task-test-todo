@@ -9,12 +9,11 @@ const ListTodo: React.FC = () => {
   const getAllTask = useTodoStore((state) => state.getAllTask);
   
   useEffect(() => {
-    console.log("dddd")
     getAllTask();
   }, []);
 
   
-  console.log(filteredTodos, todos)
+      console.log("todos >> ", todos, "filterTodo >> ", filteredTodos)
   return (
     <div>
       {filter=== "all" ? todos.map((item) => (

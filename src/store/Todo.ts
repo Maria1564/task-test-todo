@@ -27,8 +27,8 @@ export const useTodoStore = create<TodoStore>()(
     filteredTodos: [],
     filter: "all",
     getAllTask: () => {
-      if (get().todos.length && get().filter !== "all") {set(state => ({ todos: state.todos, filter: "all", filteredTodos: state.todos}))}
-      else{
+      if (((get().todos.length || localStorage.getItem("todo-storage") )&& get().filter !== "all") ) {set(state => ({ todos: state.todos, filter: "all", filteredTodos: state.todos}))}
+      else if( !localStorage.getItem("todo-storage")){
         axios
           .get("https://dummyjson.com/todos/user/54")
           .then(({ data }) => set({ todos: data.todos, filter: "all", filteredTodos: data.todos}));
@@ -53,9 +53,9 @@ export const useTodoStore = create<TodoStore>()(
         }),
       })),
     deleteSelectTask: (id) =>
-      set((state) => ({ todos: state.todos.filter((item) => item.id !== id) })),
+      console.log("todos >> ", get().todos, "filterTodo >> ", get().filteredTodos)||
+      set((state) => ({ todos: state.todos.filter((item) => item.id !== id), filteredTodos: state.filteredTodos.filter((item) => item.id !== id) })),
     addTask: (newTask) => {
-      console.log(newTask)
         if(get().filter === "completed") {
           set(state => ({todos: [...state.todos, newTask]}))
         }else{

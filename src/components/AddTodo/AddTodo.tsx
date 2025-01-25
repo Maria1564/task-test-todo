@@ -15,9 +15,10 @@ const AddTodo = () => {
 
     const addNewTask = () => {
         if(inpValue.trim() === "") return
-        console.log(todos[todos.length-1].id)
+        const id = todos[todos.length-1] ? todos[todos.length - 1].id +1 : todos.length
+        
         const newTask: Todo = {
-            id: todos[todos.length - 1].id + 1,
+            id,
             todo: inpValue,
             completed: false
         }
