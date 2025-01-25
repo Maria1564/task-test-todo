@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "./Settimgs.module.css";
+import style from "./Settings.module.css";
 import { useTodoStore } from "../../../store/Todo";
 
 const Settings: React.FC = () => {
