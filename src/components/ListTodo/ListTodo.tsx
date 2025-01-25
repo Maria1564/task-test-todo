@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Item from "./Item/Item";
 import { useTodoStore } from "../../store/Todo";
+import Settings from "./Settings/Settings";
 
 const ListTodo: React.FC = () => {
   const todos = useTodoStore((state) => state.todos);
@@ -20,6 +21,7 @@ const ListTodo: React.FC = () => {
       )) : filteredTodos.map((item) => (
         <Item key={item.id} todo={item} />
       ))}
+      {filter !== "active" && <Settings/>}
     </div>
   );
 };

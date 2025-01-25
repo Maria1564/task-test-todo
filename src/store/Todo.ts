@@ -17,6 +17,7 @@ type TodoStoreActions = {
   removeCompleteTask: (id: number) => void;
   deleteSelectTask: (id: number) => void;
   addTask: (newTask: Todo) => void;
+  deleteCompletedTask: () => void;
 };
 
 type TodoStore = TodoStoreState & TodoStoreActions;
@@ -38,15 +39,13 @@ export const useTodoStore = create<TodoStore>()(
             filteredTodos: state.todos,
           }));
         } else if (!localStorage.getItem("todo-storage")) {
-          axios
-            .get("https://dummyjson.com/todos/user/54")
-            .then(({ data }) =>
-              set({
-                todos: data.todos,
-                filter: "all",
-                filteredTodos: data.todos,
-              })
-            );
+          axios.get("https://dummyjson.com/todos/user/54").then(({ data }) =>
+            set({
+              todos: data.todos,
+              filter: "all",
+              filteredTodos: data.todos,
+            })
+          );
         }
       },
       getCompletedTask: () =>
@@ -65,7 +64,7 @@ export const useTodoStore = create<TodoStore>()(
             if (item.id === id) item.completed = true;
             return item;
           }),
-          filteredTodos: state.filteredTodos.filter(item => item.id !== id)
+          filteredTodos: state.filteredTodos.filter((item) => item.id !== id),
         })),
       removeCompleteTask: (id) =>
         set((state) => ({
@@ -73,7 +72,7 @@ export const useTodoStore = create<TodoStore>()(
             if (item.id === id) item.completed = false;
             return item;
           }),
-          filteredTodos: state.filteredTodos.filter(item => item.id  !== id)
+          filteredTodos: state.filteredTodos.filter((item) => item.id !== id),
         })),
       deleteSelectTask: (id) =>
         set((state) => ({
@@ -95,6 +94,12 @@ export const useTodoStore = create<TodoStore>()(
           }));
         }
       },
+      deleteCompletedTask: () =>
+        set((state) => ({
+          ...state,
+          todos: state.todos.filter((item) => !item.completed),
+          filteredTodos: state.filteredTodos.filter((item) => !item.completed),
+        })),
     }),
     { name: "todo-storage" }
   )

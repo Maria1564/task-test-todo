@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    border-radius: 8px;
+    border: none;
+    background-color: #c4e0efa6;
+    cursor: pointer;
+    padding: 12px 15px;
+    transition: transform .5s;
+}
+
+.button:hover {
+    transform: scale(.9);
+}
