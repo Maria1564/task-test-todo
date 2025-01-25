@@ -2,7 +2,7 @@ import React from "react";
 import { useTodoStore } from "../../../store/Todo";
 import style from "./Filter.module.css"
 
-const Filter = () => {
+const Filter: React.FC = () => {
     const {filter, getAllTask, getCompletedTask, getActiveTask} = useTodoStore()
     
   return (

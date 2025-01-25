@@ -3,7 +3,7 @@ import AddTodo from "./components/AddTodo/AddTodo"
 import ListTodo from "./components/ListTodo/ListTodo"
 
 
-const  App = () =>  {
+const  App: React.FC = () =>  {
 
   return (
     <div style={{margin: '50px auto 0', width: "max-content"}}>
